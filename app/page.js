@@ -1,17 +1,15 @@
 'use client'
 
 import compliance from '../assets/compliance.jpg'
-import whatsapp from '../assets/whatsapp.png'
 import styles from './styles.module.css'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { header } from '../utility/header'
 import Footer from './components/footer/Footer'
 
 const Home = () =>
 {
     const sectionRef = useRef(null); 
-    const [ show, setShow ] = useState(false);
 
     const handleScroll = () =>
     {
@@ -27,17 +25,19 @@ const Home = () =>
 
           <div className={styles.header}>
             <h1 className={styles.heading}>{header.heading1}<p className={styles.activeHeading}>{header.heading2}</p>{header.heading3}</h1>
-            <p className={styles.subheading}>{header.subheading}<span className={styles.explore} onClick={handleScroll}>Contact us</span></p>
+            <div className={styles.subheading}>{header.subheading}
+              <div className={styles.buttons}>
+                  <a href='https://wa.me/918431976788' target='_blank' className={styles.atag}>
+                    <span className={styles.explore}>Get enrolled</span>
+                  </a>
+                  <span className={styles.explore} onClick={handleScroll}>Follow us</span>
+                </div>
+              </div>
           </div>
 
           <div className={styles.marquee}>
             <p className={styles.marqueeText}>Coming soon | New batches starting from 6th September | Get enrolled via whatsapp</p>
           </div>
-
-          <a href='https://wa.me/918431976788' target='_blank'>
-            {show && <p className={styles.text}>Click here to get enrolled</p>}
-            <Image className={styles.whatsapp} src={whatsapp} alt='whatssapp' onMouseEnter={()=> setShow(true)} onMouseLeave={()=> setShow(false)}/>
-          </a>
 
           <div ref={sectionRef}>
             <Footer/>

@@ -60,6 +60,13 @@
     color: white;
 }
 
+.buttons
+{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
 .explore
 {
     display: flex;
@@ -69,6 +76,12 @@
     border: 1px solid var(--secondary-color);
     padding: 8px 25px;
     border-radius: 5px;
+    color: white;
+}
+
+.atag
+{
+    text-decoration: none;
 }
 
 .explore:hover
@@ -139,7 +152,7 @@
     right: 50px;
     background-color: var(--primary-bg);
     padding: 10px;
-    padding-right: 30px;
+    padding-right: 40px;
     border-radius: 5px;
     font-size: 12px;
     text-decoration: none;
