@@ -27,7 +27,7 @@ const Home = () =>
             <h1 className={styles.heading}>{header.heading1}<p className={styles.activeHeading}>{header.heading2}</p>{header.heading3}</h1>
             <div className={styles.subheading}>{header.subheading}
               <div className={styles.buttons}>
-                  <a href='https://wa.me/918431976788' target='_blank' className={styles.atag}>
+                  <a href='https://wa.me/8431976788' target='_blank' className={styles.atag}>
                     <span className={styles.explore}>Get enrolled</span>
                   </a>
                   <span className={styles.explore} onClick={handleScroll}>Follow us</span>
