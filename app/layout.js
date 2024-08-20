@@ -4,13 +4,18 @@ import "./globals.css";
 const poppins = Poppins({ subsets: ["latin"], weight: ['300', '400', '600', '700', '800', '900'] });
 
 export const metadata = {
-  title: "Fints Aacademy",
-  description: "FinCrime Compliance Education",
+  title: "FINTS - FinCrime Trusted Source | Expert Solutions for Financial Crime Prevention</title>",
+  description: "FinCrime Trusted Source",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <meta name="keywords" content="financial crime, FinCrime, financial crime prevention, fraud detection, anti-money laundering, financial security, compliance solutions, risk management"></meta>
+      <meta property="og:title" content="FINTS - FinCrime Trusted Source">  
+      <meta property="og:description" content="FINTS offers expert solutions for financial crime prevention. Explore our resources and insights to combat financial crime effectively."></meta>
+      <meta property="og:url" content="https://www.fints.com"></meta>
+      <meta property="og:type" content="website"></meta></meta>
       <body className={poppins.className}>{children}</body>
     </html>
   );

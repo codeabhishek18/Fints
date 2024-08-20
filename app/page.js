@@ -20,7 +20,7 @@ const Home = () =>
     return(
         <div className={styles.container}>
           <div className={styles.heroImage}>
-            <Image className={styles.heroImage} src={compliance} alt='img' priority={true} />
+            <Image className={styles.heroImage} src={compliance} alt='FINTS - FinCrime Trusted Source' priority={true} />
           </div>
 
           <div className={styles.header}>
