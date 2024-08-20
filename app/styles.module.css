@@ -1,0 +1,256 @@
+.container
+{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
+
+.heroImage
+{
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    backface-visibility: hidden;
+}
+
+.header
+{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.75);
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading
+{
+    width: 100%;
+    font-size: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    line-height: 6rem;
+    color: white;
+}
+
+.subheading
+{
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.explore
+{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    border: 1px solid var(--secondary-color);
+    padding: 8px 25px;
+    border-radius: 5px;
+}
+
+.explore:hover
+{
+    background-color: var(--alert-color);
+    border:1px solid var(--alert-color);
+    color: black;
+    cursor: pointer;
+}
+
+.activeHeading
+{
+    width: 100%;
+    color: var(--alert-color);
+    font-size: 6rem;
+    margin: 0;
+    text-align: center;
+}
+
+.marquee
+{
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--alert-color);
+    text-align: center;
+    font-size: 15px;
+}
+
+.scrollSection
+{
+    padding-top: 60px;
+}
+
+.marquee
+{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+  
+.marqueeText
+{
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 10s linear infinite;
+    margin: 0;
+}
+
+.whatsapp
+{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    height: 50px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.text
+{
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    background-color: var(--primary-bg);
+    padding: 10px;
+    padding-right: 30px;
+    border-radius: 5px;
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.whatsapp:hover
+{
+    transform: scale(1.1);
+}
+  
+@keyframes marquee 
+{
+    from 
+    {
+      transform: translateX(100%);
+    }
+    to 
+    {
+      transform: translateX(-100%);
+    }
+}
+
+@media screen and (max-width:780px)
+{
+    .heading
+    {
+        font-size: 40px;
+        line-height: 72px;
+    }
+
+    .activeHeading
+    {
+        font-size: 72px;
+    }
+
+    .subheading
+    {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:600px)
+{
+    .heading
+    {
+        font-size: 30px;
+        line-height: 56px;
+        font-weight: 700;
+    }
+
+    .activeHeading
+    {
+        font-size: 56px;
+    }
+
+    .subheading
+    {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:480px)
+{
+    .heading
+    {
+        font-size: 24px;
+        line-height: 48px;
+    }
+
+    .activeHeading
+    {
+        font-size: 48px;
+    }
+
+    .subheading
+    {
+        width: 90%;
+        font-size: 14px;
+        line-height: 28px;
+    }
+
+    .explore
+    {
+        padding: 0 10px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:390px)
+{
+    .heading
+    {
+        font-size: 20px;
+        line-height: 40px;
+    }
+
+    .activeHeading
+    {
+        font-size: 40px;
+    }
+
+    .subheading
+    {
+        font-size: 14px;
+        line-height: 28px;
+    }
+
+    .explore
+    {
+        padding: 0 8px;
+        font-size: 12px;
+    }
+}
