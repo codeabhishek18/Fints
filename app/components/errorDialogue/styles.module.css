@@ -1,0 +1,45 @@
+.container
+{
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error
+{
+    width: fit-content;
+    border: 1px solid var(--alert-color);
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--alert-color);
+    font-size: 20px;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home
+{
+    border: 1px solid var(--alert-color);
+    color: var(--alert-color);
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.home:hover
+{
+    background-color: var(--alert-color);
+    color: black;
+    cursor: pointer;
+}

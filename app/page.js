@@ -1,47 +1,118 @@
 'use client'
 
-import compliance from '../assets/compliance.jpg'
 import styles from './styles.module.css'
-import Image from 'next/image'
-import { useRef } from 'react'
-import { header } from '../utility/header'
+import { useEffect, useRef, useState } from 'react'
 import Footer from './components/footer/Footer'
+import HeroSection from './components/heroSection/HeroSection'
+import Stats from './components/stats/Stats'
+import { Features } from '@/utility/features'
+import FeatureCard from './components/featureCard/FeatureCard'
+import { about } from '@/utility/about'
+import { faqData } from '@/utility/faqData'
+import Accordian from './components/accordian/Accordian'
+import CourseCard from './components/courseCard/CourseCard'
+import axios from 'axios'
+import Carousel from './components/carousel/Carousel'
+import Certificate from './components/certificate/Certificate'
+import ShimmerCourseCard from './components/shimmerCourseCard/ShimmerCourseCard'
+import { shimmerCourseData } from '@/utility/shimmerData'
+import { useScheme } from '@/contextapi/SchemeProvider'
 
 const Home = () =>
 {
-    const sectionRef = useRef(null); 
-
-    const handleScroll = () =>
+    const aboutRef = useRef(null);
+    const courseRef = useRef(null);
+    const faqRef = useRef(null);
+    const [ courses, setCourses ] = useState(null);
+    const [ showFaq, setShowFaq ] = useState(0);
+    const { scheme } = useScheme();
+    
+    useEffect(()=>
     {
-        if(sectionRef.current)
-            sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+        getCourses();
+    },[]);
+
+    const getCourses = async () =>
+    {
+        try
+        {
+            const url = '/api/course'
+            const response = await axios.get(url);
+            setCourses(response.data.courses);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+
+    const handleScroll = (section) =>
+    {
+        if(aboutRef.current && section === 'about')
+            aboutRef.current.scrollIntoView({ behavior: 'smooth' })
+
+        if(courseRef.current && section === 'course')
+            courseRef.current.scrollIntoView({ behavior: 'smooth' })
+
+        if(faqRef.current && section === 'faq')
+            faqRef.current.scrollIntoView({ behavior: 'smooth' })
     }
 
     return(
-        <div className={styles.container}>
-          <div className={styles.heroImage}>
-            <Image className={styles.heroImage} src={compliance} alt='FINTS - FinCrime Trusted Source' priority={true} />
-          </div>
-
-          <div className={styles.header}>
-            <h1 className={styles.heading}>{header.heading1}<p className={styles.activeHeading}>{header.heading2}</p>{header.heading3}</h1>
-            <div className={styles.subheading}>{header.subheading}
-              <div className={styles.buttons}>
-                  <a href='https://wa.me/8431976788' target='_blank' className={styles.atag}>
-                    <span className={styles.explore}>Get enrolled</span>
-                  </a>
-                  <span className={styles.explore} onClick={handleScroll}>Follow us</span>
+        <div className={styles.wrapper}>
+            <HeroSection handleScroll={handleScroll}/>
+            <div className={scheme === 'dark' ? styles.container : `${styles.container} ${styles.light}`}>
+                <div className={styles.marquee}>
+                    <p className={styles.marqueeContent}>Coming soon | New batches starting from 6th September | Get enrolled via whatsapp</p>
                 </div>
-              </div>
-          </div>
 
-          <div className={styles.marquee}>
-            <p className={styles.marqueeText}>Coming soon | New batches starting from 6th September | Get enrolled via whatsapp</p>
-          </div>
+                <div className={styles.aboutWrapper} ref={aboutRef}>
+                    <Stats/>
+                    <p className={styles.about}>{about}</p>
+                    <div className={styles.features}>
+                    {Features.map((feature)=>
+                    (
+                        <FeatureCard feature={feature} key={feature.id}/>
+                    ))}
+                    </div>
+                </div>
 
-          <div ref={sectionRef}>
+                <div className={styles.courseWrapper} ref={courseRef}>
+                    <p className={styles.commonHeader}>Courses</p>
+                    {courses ? 
+                    <div className={styles.courses}>
+                        {courses.map((course)=>
+                        (
+                            <CourseCard course={course} key={course._id}/>
+                        ))}
+                    </div> :
+                    <div className={styles.courses}>
+                        {shimmerCourseData.map((data, index)=>
+                        (
+                            <ShimmerCourseCard key={data.id}/>
+                        ))}
+                    </div>}
+                </div>
+
+                <Certificate/>
+
+                <div className={styles.carouselWrapper}>
+                    <p className={styles.commonHeader}>Testimonials</p>
+                    <Carousel/>
+                </div>
+                
+                <div className={styles.faqWrapper} ref={faqRef}>
+                    <p className={styles.commonHeader}>FAQ</p>
+                    <div className={styles.faq}>
+                    {faqData.map((data, index)=>
+                    (
+                        <Accordian data={data} key={data.id} index={index} showFaq={showFaq} setShowFaq={setShowFaq}/>
+                    ))}
+                    </div>
+                </div>
+    
+            </div>
             <Footer/>
-          </div>
         </div>
     )
 }

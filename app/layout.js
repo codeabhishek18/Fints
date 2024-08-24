@@ -1,5 +1,6 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import SchemeWrapper from "./SchemeWrapper";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['300', '400', '600', '700', '800', '900'] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({ children }) {
       <meta property="og:description" content="FINTS offers expert solutions for financial crime prevention. Explore our resources and insights to combat financial crime effectively."/>
       <meta property="og:image" content="URL_to_your_image"/>
       <meta property="og:url" content="https://www.fintsacademy.com"/>
-      <body className={poppins.className}>{children}</body>
+      <SchemeWrapper>
+        <body className={poppins.className}>{children}</body>
+      </SchemeWrapper>
     </html>
   );
 }

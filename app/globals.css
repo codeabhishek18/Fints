@@ -13,6 +13,7 @@ body
   --primary-color: #4f3680;
   --secondary-color: white;
   --primary-bg: rgb(240, 240, 240);
+  --primary-border: rgb(44, 44, 44);
   --active-bg: #d3c7eb;
   --alert-color: #E11E48;
   --success-color: #3DC296;
