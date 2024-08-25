@@ -13,9 +13,9 @@ const Lecturecard = ({lecture, index}) =>
                 <p className={styles.duration}>{lecture.duration} hours</p>
             </div>
             <ul className={styles.lecture}>
-            {contentList.map((data)=>
+            {contentList.map((data,index)=>
             (
-                <li className={styles.list}>{data}</li>
+                <li className={styles.list} key={index}>{data}</li>
             ))}
             </ul>
         </div>

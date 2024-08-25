@@ -38,6 +38,7 @@ const Home = () =>
         {
             const url = '/api/course'
             const response = await axios.get(url);
+            console.log(response)
             setCourses(response.data.courses);
         }
         catch(error)
