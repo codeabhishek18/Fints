@@ -57,7 +57,7 @@
 .aboutWrapper
 {
     margin-top: 50px;
-    background-image: url('../assets/Fingerprint.png');
+    background-image: url('../assets/fingerprint.png');
     background-position: center;
     object-fit: contain;
 }
