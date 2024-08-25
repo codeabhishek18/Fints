@@ -2,7 +2,6 @@
 {
     width: 100vw;
     height: 100vh;
-    background: black;
     position: fixed;
     left: 0;
     top: 0;
@@ -14,29 +13,49 @@
 
 .error
 {
-    width: 250px;
-    border: 1px solid var(--alert-color);
+    width: 300px;
+    background: var(--primary-border);
     border-radius: 5px;
-    color: var(--alert-color);
+    color: white;
+    font-weight: 500;
     font-size: 16px;
-    padding: 10px;
+    padding: 30px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    position: relative;
 }
 
 .home
 {
-    border: 1px solid var(--alert-color);
-    color: var(--alert-color);
-    background-color: black;
+    border: 1px solid grey;
+    color: white;
+    background: none;
     padding: 10px;
     border-radius: 5px;
+    font-size: 14px;
+}
+
+.light
+{
+    color: black;
 }
 
 .home:hover
 {
     background-color: var(--alert-color);
-    color: black;
+    border: 1pxsolid var(--alert-color);
+    cursor: pointer;
+}
+
+.close
+{
+    height: 20px;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    top: 10px;
     cursor: pointer;
 }

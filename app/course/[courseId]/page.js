@@ -47,7 +47,7 @@ const Course = () =>
 
     return(
         <div className={scheme === 'dark' ? styles.wrapper : `${styles.wrapper} ${styles.light}`}>
-            {error && <ErrorDialogue/>}
+            {error && <ErrorDialogue setError={setError} type='away'/>}
             <div className={styles.navbar}>
                 <Image className={styles.fints} src={fints} alt='fints' onClick={()=> router.push('/')}/>
                 <Switch/>
@@ -55,7 +55,7 @@ const Course = () =>
             <div className={styles.container}>
                 {courseData ?
                 <CourseDetail course={courseData}/> :
-                <ShimmerCourseDetail/>}
+                (error ? <></> : <ShimmerCourseDetail/>)}
             </div>
             <Footer/>
         </div>

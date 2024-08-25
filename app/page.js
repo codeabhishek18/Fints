@@ -45,7 +45,8 @@ const Home = () =>
                 setCourses(response.data.courses);
                 return 
             }
-            setError(true);        }
+            setError(true);        
+        }
         catch(error)
         {
             setError(true);   
@@ -72,7 +73,7 @@ const Home = () =>
                     <p className={styles.marqueeContent}>Coming soon | New batches starting from 6th September | Get enrolled via whatsapp</p>
                 </div>
 
-                {error && <ErrorDialogue/>}
+                {error && <ErrorDialogue setError={setError}/>}
 
                 <div className={styles.aboutWrapper} ref={aboutRef}>
                     <Stats/>
@@ -86,7 +87,7 @@ const Home = () =>
                 </div>
 
                 <div className={styles.courseWrapper} ref={courseRef}>
-                    <p className={styles.commonHeader}>Courses</p>
+                    {!error && <p className={styles.commonHeader}>Courses</p>}
                     {courses ? 
                     <div className={styles.courses}>
                         {courses.map((course)=>
@@ -94,12 +95,13 @@ const Home = () =>
                             <CourseCard course={course} key={course._id}/>
                         ))}
                     </div> :
+                    (error ? <></> :
                     <div className={styles.courses}>
                         {shimmerCourseData.map((data, index)=>
                         (
                             <ShimmerCourseCard key={data.id}/>
                         ))}
-                    </div>}
+                    </div>)}
                 </div>
 
                 <Certificate/>
