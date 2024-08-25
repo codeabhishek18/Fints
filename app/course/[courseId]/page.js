@@ -11,10 +11,12 @@ import Image from 'next/image';
 import ShimmerCourseDetail from '@/app/components/shimmerCourseDetail/shimmerCourseDetail';
 import { useScheme } from '@/contextapi/SchemeProvider';
 import Switch from '@/app/components/switch/Switch';
+import ErrorDialogue from '@/app/components/errorDialogue/ErrorDialogue';
 
 const Course = () =>
 {
     const [ courseData, setCourseData ] = useState(null);
+    const [ error, setError ] = useState(false);
     const { courseId } = useParams();
     const router = useRouter();
     const { scheme } = useScheme();
@@ -30,16 +32,22 @@ const Course = () =>
         {
             const url = `/api/course/${courseId}`
             const response = await axios.get(url);
-            setCourseData(response.data.course);
+            if(response?.data?.course)
+            {
+                setCourseData(response.data.course);
+                return 
+            }
+            setError(true); 
         }
         catch(error)
         {
-            console.log(error);
+            setError(true); 
         }
     }
 
     return(
         <div className={scheme === 'dark' ? styles.wrapper : `${styles.wrapper} ${styles.light}`}>
+            {error && <ErrorDialogue/>}
             <div className={styles.navbar}>
                 <Image className={styles.fints} src={fints} alt='fints' onClick={()=> router.push('/')}/>
                 <Switch/>

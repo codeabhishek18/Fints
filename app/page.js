@@ -17,6 +17,7 @@ import Certificate from './components/certificate/Certificate'
 import ShimmerCourseCard from './components/shimmerCourseCard/ShimmerCourseCard'
 import { shimmerCourseData } from '@/utility/shimmerData'
 import { useScheme } from '@/contextapi/SchemeProvider'
+import ErrorDialogue from './components/errorDialogue/ErrorDialogue'
 
 const Home = () =>
 {
@@ -25,6 +26,7 @@ const Home = () =>
     const faqRef = useRef(null);
     const [ courses, setCourses ] = useState(null);
     const [ showFaq, setShowFaq ] = useState(0);
+    const [ error, setError ] = useState(false);
     const { scheme } = useScheme();
     
     useEffect(()=>
@@ -38,12 +40,15 @@ const Home = () =>
         {
             const url = '/api/course'
             const response = await axios.get(url);
-            console.log(response)
-            setCourses(response.data.courses);
-        }
+            if(response?.data?.courses)
+            {
+                setCourses(response.data.courses);
+                return 
+            }
+            setError(true);        }
         catch(error)
         {
-            console.log(error);
+            setError(true);   
         }
     }
 
@@ -66,6 +71,8 @@ const Home = () =>
                 <div className={styles.marquee}>
                     <p className={styles.marqueeContent}>Coming soon | New batches starting from 6th September | Get enrolled via whatsapp</p>
                 </div>
+
+                {error && <ErrorDialogue/>}
 
                 <div className={styles.aboutWrapper} ref={aboutRef}>
                     <Stats/>
