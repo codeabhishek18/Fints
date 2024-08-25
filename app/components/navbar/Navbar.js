@@ -4,15 +4,11 @@ import fints from '@/assets/fints.png'
 import HamburgerMenu from '../hamburgerMenu/HamburgerMenu'
 import SlidingMenu from '../slidingMenu/SlidingMenu'
 import { useState } from 'react'
-import { useTheme } from '@/contextAPI/themeProvider'
-import light from '@/assets/light.png'
-import dark from '@/assets/dark.png' 
 import Switch from '../switch/Switch'
-import { useScheme } from '@/contextapi/SchemeProvider'
 
 const Navbar = ({handleScroll}) =>
 {
-    
+
     const [ showSlider, setShowSlider ] = useState(false);
 
     return(

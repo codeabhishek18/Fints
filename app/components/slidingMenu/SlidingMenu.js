@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import styles from './styles.module.css'
 import close from '@/assets/close.png'
-import Switch from '../switch/Switch'
 
 const SlidingMenu= ({setShowSlider, handleScroll}) =>
 {

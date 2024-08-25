@@ -1,7 +1,6 @@
 
 import { useScheme } from '@/contextapi/SchemeProvider';
 import styles from './styles.module.css'
-import { useTheme } from '@/contextAPI/themeProvider'
 
 const Switch = () =>
 {
