@@ -3,12 +3,12 @@ import { Course } from "@/models/course.model";
 import { Lecture } from "@/models/lecture.model";
 import { NextResponse } from "next/server";
 
-dbConnect()
-
 export async function GET(req, {params}) 
 {
     try
     {
+        await dbConnect();
+
         const { courseId } = params
         const course = await Course.findOne({id: courseId}).populate({path: 'lectures', model: Lecture});
         if(!course)
