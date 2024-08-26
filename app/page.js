@@ -40,6 +40,7 @@ const Home = () =>
         {
             const url = '/api/course'
             const response = await axios.get(url);
+            console.log(response);
             if(response?.data?.courses)
             {
                 setCourses(response.data.courses);
@@ -49,6 +50,7 @@ const Home = () =>
         }
         catch(error)
         {
+            console.log('error', error)
             setError(true);   
         }
     }
