@@ -7,8 +7,9 @@ class courseService
     {
         try
         {
-            console.log(id, title, description, price, offerPrice, imageURL, level)
             const newCourse = await Course.create({id, title,description, price, offerPrice, imageURL, level})
+            if(!newCourse)
+                throw new Error('Failed to create new course')
             return await newCourse.save();
         }
         catch(error)
@@ -22,6 +23,8 @@ class courseService
         try
         {
             const courses = await Course.find({});
+            if(!courses)
+                throw new Error('Courses not found')
             return courses
         }
         catch(error)
@@ -35,6 +38,8 @@ class courseService
         try
         {
             const course = await Course.findOne({id}).populate({path: 'lectures', model: Lecture})
+            if(!course)
+                throw new Error('Course not found')
             return course
         }
         catch(error)

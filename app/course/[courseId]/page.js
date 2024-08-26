@@ -32,6 +32,7 @@ const Course = () =>
         {
             const url = `/api/course/${courseId}`
             const response = await axios.get(url);
+            console.log(response)
             if(response?.data?.course)
             {
                 setCourseData(response.data.course);
